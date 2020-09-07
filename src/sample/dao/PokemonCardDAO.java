@@ -100,7 +100,18 @@ public class PokemonCardDAO implements DAO<PokemonCard>, DAOFields {
 
     @Override
     public void create(PokemonCard pokemonCard) {
-
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(getUpdateString(getTableName()));
+            preparedStatement.setString(1, pokemonCard.getId());
+            preparedStatement.setString(2, pokemonCard.getName());
+            preparedStatement.setString(3, pokemonCard.getUrl());
+            preparedStatement.setString(4, pokemonCard.getRarity());
+            preparedStatement.setString(5, pokemonCard.getSeries());
+            preparedStatement.setString(6, pokemonCard.getSet());
+            int retorno = preparedStatement.executeUpdate();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
