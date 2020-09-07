@@ -11,7 +11,7 @@ import java.io.*;
 // Mostly to avoid doing it all manually. I know Json is not in the exercise list, so I'll probably remove it later
 public class FillTable {
     public static void main(String[] args) {
-        PokemonCardList cardList = PokemonCardListParser.fromJson(lerArquivo("base1.txt"));
+        PokemonCardList cardList = PokemonCardListParser.fromJson(lerArquivo("base1break.txt"));
         for (PokemonCard card: cardList.getCards()) {
             System.out.println(card.getName());
 
