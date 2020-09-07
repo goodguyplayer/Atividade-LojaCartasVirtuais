@@ -46,8 +46,29 @@ public class PokemonCardDAO implements DAO<PokemonCard>, DAOFields {
 
     @Override
     public List<PokemonCard> getAll() {
-        return null;
+        List<PokemonCard> cards = new ArrayList<>();
+        try{
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery(getSelectAllString(getTableName()));
+            while(result.next()){
+                PokemonCard card = new PokemonCard(
+                        result.getString("url"),
+                        result.getString("id"),
+                        result.getString("name"),
+                        PokemonCardRarityParser.toStatus(result.getString("rarity")),
+                        result.getString("series"),
+                        result.getString("set")
+                );
+                cards.add(card);
+            }
+            result.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return cards;
     }
+    
 
     @Override
     public void update(PokemonCard pokemonCard) {
