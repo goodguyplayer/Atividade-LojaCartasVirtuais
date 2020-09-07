@@ -32,7 +32,7 @@ public class PokemonCardDAO implements DAO<PokemonCard>, DAOFields {
                         result.getString("name"),
                         PokemonCardRarityParser.toStatus(result.getString("rarity")),
                         result.getString("series"),
-                        result.getString("set")
+                        result.getString("collectionset")
                 );
                 cards.add(card);
             }
@@ -57,7 +57,7 @@ public class PokemonCardDAO implements DAO<PokemonCard>, DAOFields {
                         result.getString("name"),
                         PokemonCardRarityParser.toStatus(result.getString("rarity")),
                         result.getString("series"),
-                        result.getString("set")
+                        result.getString("collectionset")
                 );
                 cards.add(card);
             }
@@ -74,9 +74,9 @@ public class PokemonCardDAO implements DAO<PokemonCard>, DAOFields {
     public void update(PokemonCard pokemonCard) {
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(getUpdateString(getTableName()));
-            preparedStatement.setString(1, pokemonCard.getUrl());
-            preparedStatement.setString(2, pokemonCard.getId());
-            preparedStatement.setString(3, pokemonCard.getName());
+            preparedStatement.setString(1, pokemonCard.getId());
+            preparedStatement.setString(2, pokemonCard.getName());
+            preparedStatement.setString(3, pokemonCard.getUrl());
             preparedStatement.setString(4, pokemonCard.getRarity());
             preparedStatement.setString(5, pokemonCard.getSeries());
             preparedStatement.setString(6, pokemonCard.getSet());
@@ -89,7 +89,13 @@ public class PokemonCardDAO implements DAO<PokemonCard>, DAOFields {
 
     @Override
     public void delete(PokemonCard pokemonCard) {
-
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(getDeleteString(getTableName()));
+            preparedStatement.setString(1, pokemonCard.getId());
+            preparedStatement.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
