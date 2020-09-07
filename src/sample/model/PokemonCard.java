@@ -35,8 +35,8 @@ public class PokemonCard {
         this.name = name;
     }
 
-    public PokemonCardRarity getRarity() {
-        return rarity;
+    public String getRarity() {
+        return ""+rarity;
     }
 
     public void setRarity(PokemonCardRarity rarity) {
