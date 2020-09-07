@@ -16,9 +16,9 @@ public class PokemonCardParser {
 
     public static PokemonCard fromJson(JSONObject json){
         PokemonCard card = new PokemonCard(
+                json.getString("url"),
                 json.getString("id"),
                 json.getString("name"),
-                json.getString("imageUrl"),
                 PokemonCardRarityParser.toStatus(json.getString("rarity")),
                 json.getString("series"),
                 json.getString("set")
