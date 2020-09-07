@@ -10,6 +10,14 @@ public class PokemonCard {
     private String series;
     private String set;
 
+    public PokemonCard(String url, String id, String name, PokemonCardRarity rarity, String series, String set) {
+        this.url = url;
+        this.id = id;
+        this.name = name;
+        this.rarity = rarity;
+        this.series = series;
+        this.set = set;
+    }
 
     public String getUrl() {
         return url;
