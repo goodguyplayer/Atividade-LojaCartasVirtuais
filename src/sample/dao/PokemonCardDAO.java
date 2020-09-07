@@ -7,6 +7,14 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <h1>Class PokemonCardDAO</h1>
+ * DAO for PokemonCard. Contains a variety of methods made to make usage easier
+ * <p>
+ * @author Nathan Brito da Silva - 17.00531-0
+ * @version 1.0
+ * @since 2020-09-07
+ */
 public class PokemonCardDAO implements DAO<PokemonCard>, DAOFields {
     private Connection connection;
     private String myDBConnectionString = "jdbc:sqlite:pokemoncards.db";
@@ -19,6 +27,12 @@ public class PokemonCardDAO implements DAO<PokemonCard>, DAOFields {
         }
     }
 
+    /**
+     * Allows for a search in the db with a specified value.
+     * Uses method getSelectConditionalString for the query.
+     * @param condition Condition for the search.
+     * @return Returns list of PokemonCard that meet said condition
+     */
     @Override
     public List<PokemonCard> get(String condition) {
         List<PokemonCard> cards = new ArrayList<>();
@@ -40,10 +54,14 @@ public class PokemonCardDAO implements DAO<PokemonCard>, DAOFields {
         }catch (Exception e){
             e.printStackTrace();
         }
-
         return cards;
     }
 
+    /**
+     * Allows for a search that returns all items in the database.
+     * Uses method getSelectAllString for the query.
+     * @return List of PokemonCard in the table
+     */
     @Override
     public List<PokemonCard> getAll() {
         List<PokemonCard> cards = new ArrayList<>();
@@ -69,7 +87,11 @@ public class PokemonCardDAO implements DAO<PokemonCard>, DAOFields {
         return cards;
     }
 
-
+    /**
+     * Method used for updating a card value in the table.
+     * Uses method getUpdateString
+     * @param pokemonCard Takes a PokemonCard infomation
+     */
     @Override
     public void update(PokemonCard pokemonCard) {
         try{
@@ -86,7 +108,11 @@ public class PokemonCardDAO implements DAO<PokemonCard>, DAOFields {
         }
     }
 
-
+    /**
+     * Method used for deleting a card in the table.
+     * Uses method getDeleteString
+     * @param pokemonCard Takes a PokemonCard infomation
+     */
     @Override
     public void delete(PokemonCard pokemonCard) {
         try{
@@ -98,6 +124,11 @@ public class PokemonCardDAO implements DAO<PokemonCard>, DAOFields {
         }
     }
 
+    /**
+     * Method used to add a card in the table
+     * Uses method getInsertString
+     * @param pokemonCard Takes a PokemonCard infomation
+     */
     @Override
     public void create(PokemonCard pokemonCard) {
         try{
@@ -114,31 +145,60 @@ public class PokemonCardDAO implements DAO<PokemonCard>, DAOFields {
         }
     }
 
+    /**
+     * Method used to store the name of the table.
+     * @return name of the table
+     */
     @Override
     public String getTableName() {
         return "pokemoncards";
     }
 
+    /**
+     * Used to store the query for deletion
+     * @param table Takes table name to write the string
+     * @return Query string
+     */
     @Override
     public String getDeleteString(String table) {
         return "DELETE FROM "+ table +" WHERE id = ?;";
     }
 
+    /**
+     * Used to store the query for update
+     * @param table Takes table name to write the string
+     * @return Query string
+     */
     @Override
     public String getUpdateString(String table) {
         return "UPDATE "+ table +" SET id = ?, name = ?, url = ?, rarity = ?, series = ?, collectionset = ? WHERE id = ?;";
     }
 
+    /**
+     * Used to store the query for insertion
+     * @param table Takes table name to write the string
+     * @return Query string
+     */
     @Override
     public String getInsertString(String table) {
         return "INSERT INTO "+ table + " (id, name, url, rarity, series, collectionset) VALUES (?, ?, ?, ?, ?, ?);";
     }
 
+    /**
+     * Used to store the query for getting all cards
+     * @param table Takes table name to write the string
+     * @return Query string
+     */
     @Override
     public String getSelectAllString(String table) {
         return "SELECT * FROM " + table;
     }
 
+    /**
+     * Used to store the query for condition search
+     * @param table Takes table name to write the string
+     * @return Query string
+     */
     @Override
     public String getSelectConditionalString(String table) {
         return "SELECT * FROM " + table + " WHERE ";
