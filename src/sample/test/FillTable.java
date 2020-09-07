@@ -14,18 +14,24 @@ import java.io.*;
 public class FillTable {
 
     public static void main(String[] args) {
+        String[] listoffiles = {"base1", "base2", "base3", "base4", "base5", "gym1", "gym2", "neo1", "neo2"};
         PokemonCardDAO cardDAO = new PokemonCardDAO();
-        PokemonCardList cardList = PokemonCardListParser.fromJson(lerArquivo("base1break.txt"));
+        try{
+            for (String filename: listoffiles) {
+                PokemonCardList cardList = PokemonCardListParser.fromJson(lerArquivo("jsontxtfiles/"+ filename +".txt"));
+                System.out.println(cardDAO.getTableName());
+                for (PokemonCard card: cardList.getCards()) {
+                    try{
+                        System.out.println(card.getName());
+                        cardDAO.create(card);
+                    } catch (Exception exception){
+                        exception.printStackTrace();
+                    }
 
-        System.out.println(cardDAO.getTableName());
-        for (PokemonCard card: cardList.getCards()) {
-            try{
-                System.out.println(card.getName());
-                cardDAO.create(card);
-            } catch (Exception exception){
-                exception.printStackTrace();
+                }
             }
-
+        } catch (Exception e){
+            e.printStackTrace();
         }
     }
 
