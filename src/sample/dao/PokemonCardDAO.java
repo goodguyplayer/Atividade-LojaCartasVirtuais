@@ -2,9 +2,13 @@ package sample.dao;
 
 import sample.model.PokemonCard;
 
+import java.sql.Connection;
 import java.util.List;
 
 public class PokemonCardDAO implements DAO<PokemonCard>, DAOFields {
+    private Connection connection;
+    private String myDBConnectionString = "jdbc:sqlite:pokemoncards.db";
+
     @Override
     public List<PokemonCard> get(String condition) {
         return null;
