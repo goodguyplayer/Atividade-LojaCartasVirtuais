@@ -1,23 +1,18 @@
 package sample;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
-public class Main extends Application {
-
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 600));
-        primaryStage.show();
-    }
-
+/**
+ * <h1>Main</h1>
+ * Used to run Central.
+ *
+ * @author Nathan Brito da Silva - 17.00531-0
+ * @version 1.0
+ * @since 2020-09-07
+ */
+public class Main{
 
     public static void main(String[] args) {
-        launch(args);
+        Central central = new Central();
+        central.runMe(args);
+
     }
 }
