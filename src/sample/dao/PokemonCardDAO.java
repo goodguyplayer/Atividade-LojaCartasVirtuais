@@ -116,31 +116,31 @@ public class PokemonCardDAO implements DAO<PokemonCard>, DAOFields {
 
     @Override
     public String getTableName() {
-        return null;
+        return "pokemoncards";
     }
 
     @Override
     public String getDeleteString(String table) {
-        return null;
+        return "DELETE FROM "+ table +" WHERE id = ?;";
     }
 
     @Override
     public String getUpdateString(String table) {
-        return null;
+        return "UPDATE "+ table +" SET id = ?, name = ?, url = ?, rarity = ?, series = ?, collectionset = ? WHERE id = ?;";
     }
 
     @Override
     public String getInsertString(String table) {
-        return null;
+        return "INSERT INTO "+ table + " (id, name, url, rarity, series, collectionset) VALUES (?, ?, ?, ?, ?, ?);";
     }
 
     @Override
     public String getSelectAllString(String table) {
-        return null;
+        return "SELECT * FROM " + table;
     }
 
     @Override
     public String getSelectConditionalString(String table) {
-        return null;
+        return "SELECT * FROM " + table + " WHERE ";
     }
 }
