@@ -21,7 +21,7 @@ public class PokemonCardList {
                 '}';
     }
 
-    public final List<PokemonCard> getJogos() {
+    public final List<PokemonCard> getCards() {
         return this.cards;
     }
 }
