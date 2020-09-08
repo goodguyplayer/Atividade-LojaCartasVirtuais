@@ -41,6 +41,6 @@ public class Controller {
         this.central = central;
 
         // Add observable list data to the table
-        //PokemonTable.setItems(central.get());
+        PokemonTable.setItems(central.getPokemonData());
     }
 }
