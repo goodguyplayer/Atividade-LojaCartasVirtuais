@@ -9,8 +9,16 @@ import sample.parsers.PokemonCardRarityParser;
 
 import java.io.*;
 
-// Making a test class to both read Json and fill the database.
-// Mostly to avoid doing it all manually. I know Json is not in the exercise list, so I'll probably remove it later
+/**
+ * <h1>Class FillTable</h1>
+ * <h3>Made for test</h3>
+ * Originally made to test the PokemonCardDAO and to fill the SQL database with some json files.
+ * May be kept in the final product, but it is not required.
+ *
+ * @author Nathan Brito da Silva - 17.00531-0
+ * @version 1.0
+ * @since 2020-09-07
+ */
 public class FillTable {
 
     public static void main(String[] args) {
@@ -35,19 +43,18 @@ public class FillTable {
         }
     }
 
-    // Yes yes, reusing from previous codes.
+    /**
+     * Read file and extract the json from it.
+     * @param nomeArquivo Filename. String
+     * @return JSONArray
+     */
     private static JSONArray lerArquivo(String nomeArquivo) {
         JSONArray json = null;
         File file = new File(nomeArquivo);
         try{
-            //Cria o fluxo de leitura
             FileReader fileReader = new FileReader(file);
-            //Buffer de leitura
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-
             json = new JSONArray (bufferedReader.readLine());
-
-            //Feche tudo ao terminar
             bufferedReader.close();
             fileReader.close();
 
@@ -58,22 +65,19 @@ public class FillTable {
         return json;
     }
 
+    /**
+     * Write json data in a file.
+     * @param nomeArquivo Name of the file. String
+     * @param json Json data to be written. JSONArray
+     */
     private static void escreverArquivo(String nomeArquivo, JSONArray json) {
-        //Cria um arquivo
         File file = new File(nomeArquivo);
         try{
 
-            //Cria uma conexão apra escrever no arquivo
             FileWriter fileWriter = new FileWriter(file);
-            //Cria um buffer de writting
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-
-            //Escrever algo no arquivo
             bufferedWriter.write("" + json);
-
-            //Fecha o buffer e escreve no arquivo
             bufferedWriter.close();
-            //fecha os demais fluxos
             fileWriter.close();
 
         }catch(Exception exception){
