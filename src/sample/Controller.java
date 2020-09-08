@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -10,7 +11,7 @@ import sample.parsers.PokemonCardRarityParser;
 
 public class Controller {
     @FXML
-    private TableView<PokemonCard> personTable;
+    private TableView<PokemonCard> PokemonTable;
     @FXML
     private TableColumn<PokemonCard, String> PokemonNameColumn;
 
@@ -26,37 +27,20 @@ public class Controller {
     private Label PokemonSeriesLabel;
     @FXML
     private Label PokemonSetLabel;
-    @FXML
-    private TextField PokemonNameText;
-    @FXML
-    private TextField PokemonIdText;
-    @FXML
-    private TextField PokemonURLText;
-    @FXML
-    private TextField PokemonRarityText;
-    @FXML
-    private TextField PokemonSeriesText;
-    @FXML
-    private TextField PokemonSetText;
 
-    private TextField central;
+    private Central central;
 
-    @FXML
-    public void register(){
-        PokemonCard usuario = new PokemonCard(
-                PokemonURLText.getText(),
-                PokemonIdLabel.getText(),
-                PokemonNameText.getText(),
-                PokemonCardRarityParser.toStatus(PokemonRarityText.getText()),
-                PokemonSeriesText.getText(),
-                PokemonSetText.getText()
-        );
-        PokemonURLText.clear();
-        PokemonIdText.clear();
-        PokemonNameText.clear();
-        PokemonRarityText.clear();
-        PokemonSeriesText.clear();
-        PokemonSetText.clear();
-        System.out.println("Usuario Cadastrado:" + usuario);
+    public Controller() {
+    }
+
+    private void initialize() {
+        PokemonNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
+    }
+
+    public void setCentral(Central central) {
+        this.central = central;
+
+        // Add observable list data to the table
+        //PokemonTable.setItems(central.get());
     }
 }
