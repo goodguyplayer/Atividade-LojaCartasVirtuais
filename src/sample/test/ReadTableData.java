@@ -1,7 +1,12 @@
 package sample.test;
 
 import sample.dao.PokemonCardDAO;
+import sample.enums.PokemonCardRarity;
 import sample.model.PokemonCard;
+import sample.model.PokemonCardList;
+import sample.parsers.PokemonCardRarityParser;
+
+import java.util.List;
 
 /**
  * <h1> Class ReadTableData</h1>
@@ -15,6 +20,9 @@ import sample.model.PokemonCard;
 public class ReadTableData {
     public static void main(String[] args) {
         PokemonCardDAO cardDAO = new PokemonCardDAO();
+
+        // getAll - Successfully ran
+        /*
         System.out.println("All registered pokemons.");
         for (PokemonCard card: cardDAO.getAll()) {
             System.out.println("-------------------------");
@@ -25,6 +33,35 @@ public class ReadTableData {
             cardDAO.update(card);
         }
         System.out.println("-------------------------");
+         */
+
+
+        // Removal - Successfully ran
+        /*
+        for (PokemonCard card: cardDAO.getAll()) {
+            cardDAO.delete(card);
+        }
+        */
+
+        // get - Succesfully ran - Eevee best pokemon btw
+        /*
+        String test = "base2-12";
+        List<PokemonCard> vaporeon = cardDAO.get("id= \""+ test +"\" ");
+        System.out.println("Which pokemon is the second best?");
+        System.out.println(vaporeon.get(0).getName());
+         */
+
+        // update - Succesfully ran
+        /*
+        String test = "base1-14";
+        List<PokemonCard> toUpdate = cardDAO.get("id= \""+ test +"\" ");
+        toUpdate.get(0).setName("Pikachu will never be raichu");
+        cardDAO.update( toUpdate.get(0) );
+
+        System.out.println(cardDAO.get("id= \""+ test +"\" ").get(0).getName());
+         */
+
+
 
     }
 }
