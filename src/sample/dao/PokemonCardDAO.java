@@ -16,7 +16,8 @@ import java.util.List;
  *     Version 1.1
  *     - Modified methods get() and getAll(). Removed the list var and added the PokemonCardList.
  *
- *     
+ *     Version 1.2
+ *     - Removed "int retorno = " from create() and update()
  * @author Nathan Brito da Silva - 17.00531-0
  * @version 1.1
  * @since 2020-09-07
@@ -104,7 +105,7 @@ public class PokemonCardDAO implements DAO<PokemonCard>, DAOFields {
             preparedStatement.setString(4, pokemonCard.getRarity());
             preparedStatement.setString(5, pokemonCard.getSeries());
             preparedStatement.setString(6, pokemonCard.getSet());
-            int retorno = preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -141,7 +142,7 @@ public class PokemonCardDAO implements DAO<PokemonCard>, DAOFields {
             preparedStatement.setString(4, pokemonCard.getRarity());
             preparedStatement.setString(5, pokemonCard.getSeries());
             preparedStatement.setString(6, pokemonCard.getSet());
-            int retorno = preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
         }catch (Exception e){
             e.printStackTrace();
         }
