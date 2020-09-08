@@ -18,8 +18,12 @@ import java.util.List;
  *
  *     Version 1.2
  *     - Removed "int retorno = " from create() and update()
+ *
+ *     Version 1.3
+ *     - Fixed update method -- Was missing last preparedStatement.setString(7, pokemonCard.getId());
+ *
  * @author Nathan Brito da Silva - 17.00531-0
- * @version 1.1
+ * @version 1.3
  * @since 2020-09-07
  */
 public class PokemonCardDAO implements DAO<PokemonCard>, DAOFields {
@@ -105,6 +109,7 @@ public class PokemonCardDAO implements DAO<PokemonCard>, DAOFields {
             preparedStatement.setString(4, pokemonCard.getRarity());
             preparedStatement.setString(5, pokemonCard.getSeries());
             preparedStatement.setString(6, pokemonCard.getSet());
+            preparedStatement.setString(7, pokemonCard.getId());
             preparedStatement.executeUpdate();
         }catch (Exception e){
             e.printStackTrace();
