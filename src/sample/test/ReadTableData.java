@@ -22,7 +22,9 @@ public class ReadTableData {
             System.out.println("Set.: " + card.getSet());
             System.out.println("Url.: " + card.getUrl());
             System.out.println("ID.: " + card.getId());
+            cardDAO.update(card);
         }
         System.out.println("-------------------------");
+
     }
 }

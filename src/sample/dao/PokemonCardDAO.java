@@ -1,6 +1,7 @@
 package sample.dao;
 
 import sample.model.PokemonCard;
+import sample.model.PokemonCardList;
 import sample.parsers.PokemonCardRarityParser;
 
 import java.sql.*;
@@ -11,8 +12,13 @@ import java.util.List;
  * <h1>Class PokemonCardDAO</h1>
  * DAO for PokemonCard. Contains a variety of methods made to make usage easier
  * <p>
+ * <br>
+ *     Version 1.1
+ *     - Modified methods get() and getAll(). Removed the list var and added the PokemonCardList.
+ *
+ *     
  * @author Nathan Brito da Silva - 17.00531-0
- * @version 1.0
+ * @version 1.1
  * @since 2020-09-07
  */
 public class PokemonCardDAO implements DAO<PokemonCard>, DAOFields {
@@ -35,26 +41,24 @@ public class PokemonCardDAO implements DAO<PokemonCard>, DAOFields {
      */
     @Override
     public List<PokemonCard> get(String condition) {
-        List<PokemonCard> cards = new ArrayList<>();
+        PokemonCardList cardList = new PokemonCardList();
         try{
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery(getSelectConditionalString(getTableName()) + condition);
             while(result.next()){
-                PokemonCard card = new PokemonCard(
+                cardList.addCard(new PokemonCard(
                         result.getString("url"),
                         result.getString("id"),
                         result.getString("name"),
                         PokemonCardRarityParser.toStatus(result.getString("rarity")),
                         result.getString("series"),
-                        result.getString("collectionset")
-                );
-                cards.add(card);
+                        result.getString("collectionset")));
             }
             result.close();
         }catch (Exception e){
             e.printStackTrace();
         }
-        return cards;
+        return cardList.getCards();
     }
 
     /**
@@ -64,27 +68,25 @@ public class PokemonCardDAO implements DAO<PokemonCard>, DAOFields {
      */
     @Override
     public List<PokemonCard> getAll() {
-        List<PokemonCard> cards = new ArrayList<>();
+        PokemonCardList cardList = new PokemonCardList();
         try{
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery(getSelectAllString(getTableName()));
             while(result.next()){
-                PokemonCard card = new PokemonCard(
+                cardList.addCard(new PokemonCard(
                         result.getString("url"),
                         result.getString("id"),
                         result.getString("name"),
                         PokemonCardRarityParser.toStatus(result.getString("rarity")),
                         result.getString("series"),
-                        result.getString("collectionset")
-                );
-                cards.add(card);
+                        result.getString("collectionset")));
             }
             result.close();
         }catch (Exception e){
             e.printStackTrace();
         }
 
-        return cards;
+        return cardList.getCards();
     }
 
     /**
