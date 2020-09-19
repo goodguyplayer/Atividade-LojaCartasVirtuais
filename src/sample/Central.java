@@ -58,7 +58,7 @@ public class Central extends Application {
             // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Central.class.getResource("edit.fxml"));
-            AnchorPane anchorPane = loader.<AnchorPane>load();
+            AnchorPane anchorPane = (AnchorPane) loader.load();
 
             // Create the dialog Stage.
             Stage dialogStage = new Stage();
