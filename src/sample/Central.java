@@ -27,6 +27,10 @@ public class Central extends Application {
 
     }
 
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception{
 
