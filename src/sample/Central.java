@@ -36,7 +36,7 @@ public class Central extends Application {
 
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Central.class.getResource("sample.fxml"));
+            loader.setLocation(Central.class.getResource("pokemonOverview.fxml"));
             AnchorPane anchorPane = loader.<AnchorPane>load();
 
             // Give the controller access to the main app.
@@ -87,7 +87,7 @@ public class Central extends Application {
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Central.class.getResource("sample.fxml"));
+            loader.setLocation(Central.class.getResource("pokemonOverview.fxml"));
             rootLayout = (BorderPane) loader.load();
 
             // Show the scene containing the root layout.
@@ -102,7 +102,7 @@ public class Central extends Application {
     public void showController() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Central.class.getResource("sample.fxml"));
+            loader.setLocation(Central.class.getResource("pokemonOverview.fxml"));
             AnchorPane anchorPane = loader.<AnchorPane>load();
 
             // Give the controller access to the main app.

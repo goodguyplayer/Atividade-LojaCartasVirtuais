@@ -13,18 +13,24 @@ import sample.parsers.PokemonCardRarityParser;
 
 import static sample.enums.PokemonCardRarity.COMMON;
 
+/**
+ * class Controller, the class that works for the pokemonOverview.fxml file
+ *
+ * @author Nathan Brito da Silva - 17.00531-0
+ * @version 1.0
+ * @since 2020-09-19
+ */
+
+/*
+Made with the help of Murilo and https://code.makery.ch/library/javafx-tutorial/part3/
+Took too long to make it work.
+ */
 public class Controller {
 
-    @FXML
-    public void buttonAdd(Event e){
-        System.out.println("Button clicked");
-    }
-
-    @FXML
-    public void buttonEdit(Event e){
-        System.out.println("Button clicked");
-    }
-
+    /**
+     * method assigned to remove a card in the table, erasing it from both database and visual fxml
+     * @param e event when clicked.
+     */
     @FXML
     public void buttonRemove(Event e){
         int selectedIndex = PokemonTable.getSelectionModel().getSelectedIndex();
@@ -72,6 +78,10 @@ public class Controller {
     public Controller() {
     }
 
+    /**
+     * Executed when the fxml is shown.
+     * It populates the columns with pokemon data.
+     */
     @FXML
     private void initialize() {
         // Initialize the person table with the two columns.
@@ -84,6 +94,11 @@ public class Controller {
                 (observable, oldValue, newValue) -> showPokemonDetails(newValue));
     }
 
+    /**
+     * Executed when a pokemon is selected in the table.
+     * Displays said selected pokemon info. If no card has been selected, keep it as null.
+     * @param card The info selected
+     */
     private void showPokemonDetails(PokemonCard card) {
         if (card != null) {
             PokemonNameLabel.setText(card.getName());
@@ -104,6 +119,10 @@ public class Controller {
         }
     }
 
+    /**
+     * sets central method
+     * @param central
+     */
     public void setCentral(Central central) {
         this.central = central;
 
@@ -111,8 +130,11 @@ public class Controller {
         PokemonTable.setItems(central.getCardData());
     }
 
+    /**
+     * When the button to create a new pokemon card is selected, send a basic card with empty fields for user to fill.
+     */
     @FXML
-    private void handleNewPerson() {
+    private void handleNewPokemon() {
         PokemonCard tempCard = new PokemonCard("","","",COMMON,"","");
         boolean okClicked = central.showCardEditDialog(tempCard);
         if (okClicked) {
@@ -126,7 +148,7 @@ public class Controller {
      * details for the selected person.
      */
     @FXML
-    private void handleEditPerson() {
+    private void handleEditPokemon() {
         PokemonCard selectedCard = PokemonTable.getSelectionModel().getSelectedItem();
         if (selectedCard != null) {
             boolean okClicked = central.showCardEditDialog(selectedCard);
@@ -140,8 +162,8 @@ public class Controller {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.initOwner(central.getPrimaryStage());
             alert.setTitle("No Selection");
-            alert.setHeaderText("No Person Selected");
-            alert.setContentText("Please select a person in the table.");
+            alert.setHeaderText("No pokemon card Selected");
+            alert.setContentText("Please select a card in the table.");
 
             alert.showAndWait();
         }

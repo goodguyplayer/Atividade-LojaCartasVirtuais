@@ -7,6 +7,13 @@ import javafx.stage.Stage;
 import sample.model.PokemonCard;
 import sample.parsers.PokemonCardRarityParser;
 
+/**
+ * class used as controller for edit.fxml
+ *
+ * @author Nathan Brito da Silva - 17.00531-0
+ * @version 1.0
+ * @since 2020-09-19
+ */
 public class EditController {
     @FXML
     private TextField Name;
@@ -29,10 +36,18 @@ public class EditController {
     private void initialize() {
     }
 
+    /**
+     * Sets the dialog stage
+     * @param dialogStage
+     */
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
     }
 
+    /**
+     * Sets the card
+     * @param card
+     */
     public void setCard(PokemonCard card) {
         this.card = card;
 
@@ -44,16 +59,26 @@ public class EditController {
         Set.setText(card.getSet());
     }
 
+    /**
+     * Checks whether the button "ok" is clicked
+     * @return
+     */
     public boolean isOkClicked() {
         return okClicked;
     }
 
+    /**
+     * Handles the situation when the user cancels
+     */
     @FXML
     private void handleCancel() {
         dialogStage.close();
     }
 
 
+    /**
+     * Handles the situation when the user clicks okay
+     */
     @FXML
     private void handleOk() {
         if (isInputValid()) {
@@ -69,6 +94,10 @@ public class EditController {
         }
     }
 
+    /**
+     * Checks to see if input is valid. Else throw a message saying that there's an error
+     * @return
+     */
     private boolean isInputValid() {
         String errorMessage = "";
 
