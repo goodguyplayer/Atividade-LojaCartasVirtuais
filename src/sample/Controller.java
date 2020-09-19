@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -49,5 +50,22 @@ public class Controller {
     @FXML
     private Label PokemonSetLabel;
 
+    private Central central;
 
+    public Controller() {
+    }
+
+    @FXML
+    private void initialize() {
+        // Initialize the person table with the two columns.
+        PokemonNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
+        PokemonSetColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSet()));
+    }
+
+    public void setCentral(Central central) {
+        this.central = central;
+
+        // Add observable list data to the table
+        PokemonTable.setItems(central.getCardData());
+    }
 }
