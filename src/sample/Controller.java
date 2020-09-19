@@ -67,6 +67,8 @@ public class Controller {
 
     private Central central;
 
+    private PokemonCardDAO cardDAO = new PokemonCardDAO();
+
     public Controller() {
     }
 
@@ -114,6 +116,7 @@ public class Controller {
         PokemonCard tempCard = new PokemonCard("","","",COMMON,"","");
         boolean okClicked = central.showCardEditDialog(tempCard);
         if (okClicked) {
+            cardDAO.create(tempCard);
             central.getCardData().add(tempCard);
         }
     }
@@ -128,6 +131,7 @@ public class Controller {
         if (selectedCard != null) {
             boolean okClicked = central.showCardEditDialog(selectedCard);
             if (okClicked) {
+                cardDAO.update(selectedCard);
                 showPokemonDetails(selectedCard);
             }
 
