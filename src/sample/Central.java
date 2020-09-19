@@ -61,7 +61,7 @@ public class Central extends Application {
 
             // Give the controller access to the main app.
             Controller controller = loader.getController();
-            controller.setCentral(this);
+            //controller.setCentral(this);
 
         } catch (IOException e) {
             e.printStackTrace();
