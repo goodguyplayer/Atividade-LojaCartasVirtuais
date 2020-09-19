@@ -22,6 +22,10 @@ public class JavaFX extends Application {
         loader.setLocation(Central.class.getResource("sample.fxml"));
         AnchorPane anchorPane = loader.<AnchorPane>load();
 
+        // Give the controller access to the main app.
+        Controller controller = loader.getController();
+        //controller.setCentral(this);
+
         Scene scene = new Scene(anchorPane);
         primaryStage.setScene(scene);
         primaryStage.show();
