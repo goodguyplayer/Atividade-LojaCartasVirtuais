@@ -60,6 +60,31 @@ public class Controller {
         // Initialize the person table with the two columns.
         PokemonNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
         PokemonSetColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSet()));
+
+        showPokemonDetails(null);
+
+        PokemonTable.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> showPokemonDetails(newValue));
+    }
+
+    private void showPokemonDetails(PokemonCard card) {
+        if (card != null) {
+            PokemonNameLabel.setText(card.getName());
+            PokemonIdLabel.setText(card.getId());
+            PokemonURLLabel.setText(card.getUrl());
+            PokemonRarityLabel.setText(card.getRarity());
+            PokemonSeriesLabel.setText(card.getSeries());
+            PokemonSetLabel.setText(card.getSet());
+
+
+        } else {
+            PokemonNameLabel.setText("");
+            PokemonIdLabel.setText("");
+            PokemonURLLabel.setText("");
+            PokemonRarityLabel.setText("");
+            PokemonSeriesLabel.setText("");
+            PokemonSetLabel.setText("");
+        }
     }
 
     public void setCentral(Central central) {
