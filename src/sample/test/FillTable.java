@@ -24,6 +24,11 @@ public class FillTable {
     public static void main(String[] args) {
         String[] listoffiles = {"base1", "base2", "base3", "base4", "base5", "gym1", "gym2", "neo1", "neo2"};
         PokemonCardDAO cardDAO = new PokemonCardDAO();
+        /*
+        for (PokemonCard card: cardDAO.getAll()) {
+            cardDAO.delete(card);
+        }
+         */
         try{
             for (String filename: listoffiles) {
                 PokemonCardList cardList = PokemonCardListParser.fromJson(lerArquivo("jsontxtfiles/"+ filename +".txt"));
