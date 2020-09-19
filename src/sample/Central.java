@@ -28,7 +28,7 @@ public class Central extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        
+
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Central.class.getResource("sample.fxml"));
