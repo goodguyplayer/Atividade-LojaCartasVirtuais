@@ -17,20 +17,36 @@ import sample.model.PokemonCardList;
 
 import java.io.IOException;
 
+/**
+ * Main class that runs the application and handles other methods
+ */
 public class Central extends Application {
     private BorderPane rootLayout;
     private ObservableList<PokemonCard> pokemonCard = FXCollections.observableArrayList();
     private Stage primaryStage;
 
+    /**
+     * Main method for execution
+     * @param args
+     */
     public void runMe(String[] args){
         launch(args);
 
     }
 
+    /**
+     * Returns the PrimaryStage
+     * @return
+     */
     public Stage getPrimaryStage() {
         return primaryStage;
     }
 
+    /**
+     * Used to set the pokemonOverview.fxml and edit.fxml
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception{
 
@@ -53,6 +69,11 @@ public class Central extends Application {
 
     }
 
+    /**
+     * Used to display the edit dialog segment
+     * @param card
+     * @return
+     */
     public boolean showCardEditDialog(PokemonCard card) {
         try {
             // Load the fxml file and create a new stage for the popup dialog.
@@ -83,47 +104,10 @@ public class Central extends Application {
         }
     }
 
-    public void initRootLayout() {
-        try {
-            // Load root layout from fxml file.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Central.class.getResource("pokemonOverview.fxml"));
-            rootLayout = (BorderPane) loader.load();
-
-            // Show the scene containing the root layout.
-            Scene scene = new Scene(rootLayout);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void showController() {
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Central.class.getResource("pokemonOverview.fxml"));
-            AnchorPane anchorPane = loader.<AnchorPane>load();
-
-            // Give the controller access to the main app.
-            Controller controller = loader.getController();
-            controller.setCentral(this);
-
-            Scene scene = new Scene(anchorPane);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public ObservableList<PokemonCard> getPokemonData() {
-        pokemonCard.addAll();
-        return pokemonCard;
-    }
-
-
+    /**
+     * gets all cards from the database to insert in the fxml
+     * @return
+     */
     public ObservableList<PokemonCard> getCardData() {
         PokemonCardDAO cardDAO = new PokemonCardDAO();
         for (PokemonCard card: cardDAO.getAll()) {

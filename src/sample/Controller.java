@@ -36,7 +36,6 @@ public class Controller {
         int selectedIndex = PokemonTable.getSelectionModel().getSelectedIndex();
         PokemonCardDAO cardDAO = new PokemonCardDAO();
         if (selectedIndex >= 0) {
-            System.out.println(PokemonTable.getItems().get(selectedIndex).getId());
             cardDAO.delete(cardDAO.get("id = \"" + PokemonTable.getItems().get(selectedIndex).getId() + "\"").get(0));
             PokemonTable.getItems().remove(selectedIndex);
 
@@ -84,7 +83,7 @@ public class Controller {
      */
     @FXML
     private void initialize() {
-        // Initialize the person table with the two columns.
+        // Initialize the pokemon table with the two columns.
         PokemonNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
         PokemonSetColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSet()));
 
