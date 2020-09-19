@@ -6,10 +6,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import sample.dao.PokemonCardDAO;
 import sample.model.PokemonCard;
 import sample.parsers.PokemonCardRarityParser;
 
@@ -27,7 +25,22 @@ public class Controller {
 
     @FXML
     public void buttonRemove(Event e){
-        System.out.println("Button clicked");
+        int selectedIndex = PokemonTable.getSelectionModel().getSelectedIndex();
+        PokemonCardDAO cardDAO = new PokemonCardDAO();
+        if (selectedIndex >= 0) {
+            System.out.println(PokemonTable.getItems().get(selectedIndex).getId());
+            cardDAO.delete(cardDAO.get("id = \"" + PokemonTable.getItems().get(selectedIndex).getId() + "\"").get(0));
+            PokemonTable.getItems().remove(selectedIndex);
+
+        } else {
+            // Nothing selected.
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Card Selected");
+            alert.setContentText("Please select a Card in the table.");
+
+            alert.showAndWait();
+        }
     }
 
     @FXML
