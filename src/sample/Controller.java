@@ -29,7 +29,25 @@ public class Controller {
         System.out.println("Button clicked");
     }
 
-    
+    @FXML
+    private TableView<PokemonCard> PokemonTable;
+    @FXML
+    private TableColumn<PokemonCard, String> PokemonNameColumn;
+    @FXML
+    private TableColumn<PokemonCard, String> PokemonSetColumn;
+
+    @FXML
+    private Label PokemonNameLabel;
+    @FXML
+    private Label PokemonIdLabel;
+    @FXML
+    private Label PokemonURLLabel;
+    @FXML
+    private Label PokemonRarityLabel;
+    @FXML
+    private Label PokemonSeriesLabel;
+    @FXML
+    private Label PokemonSetLabel;
 
 
 }

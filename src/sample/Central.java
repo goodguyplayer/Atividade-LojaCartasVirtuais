@@ -72,4 +72,9 @@ public class Central extends Application {
         pokemonCard.addAll();
         return pokemonCard;
     }
+
+
+    public ObservableList<PokemonCard> getCardData() {
+        return pokemonCard;
+    }
 }
