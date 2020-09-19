@@ -10,6 +10,7 @@ import javafx.scene.control.Control;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import sample.dao.PokemonCardDAO;
 import sample.model.PokemonCard;
 import sample.model.PokemonCardList;
 
@@ -27,13 +28,23 @@ public class Central extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        this.primaryStage.setTitle("Hello World");
-        //primaryStage.setScene(new Scene(root, 300, 600));
-        //primaryStage.show();
+        
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Central.class.getResource("sample.fxml"));
+            AnchorPane anchorPane = loader.<AnchorPane>load();
 
-        initRootLayout();
-        getPokemonData();
+            // Give the controller access to the main app.
+            Controller controller = loader.getController();
+            controller.setCentral(this);
+
+            Scene scene = new Scene(anchorPane);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -56,12 +67,16 @@ public class Central extends Application {
     public void showController() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Central.class.getResource("pokemonOverview.fxml"));
-            AnchorPane pokemonOverview = (AnchorPane) loader.load();
+            loader.setLocation(Central.class.getResource("sample.fxml"));
+            AnchorPane anchorPane = loader.<AnchorPane>load();
 
             // Give the controller access to the main app.
             Controller controller = loader.getController();
-            //controller.setCentral(this);
+            controller.setCentral(this);
+
+            Scene scene = new Scene(anchorPane);
+            primaryStage.setScene(scene);
+            primaryStage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -75,6 +90,10 @@ public class Central extends Application {
 
 
     public ObservableList<PokemonCard> getCardData() {
+        PokemonCardDAO cardDAO = new PokemonCardDAO();
+        for (PokemonCard card: cardDAO.getAll()) {
+            pokemonCard.add(card);
+        }
         return pokemonCard;
     }
 }
