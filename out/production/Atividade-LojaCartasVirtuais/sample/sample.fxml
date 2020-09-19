@@ -19,7 +19,8 @@
                <children>
                   <TableView fx:id="PokemonTable" layoutY="28.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn fx:id="PokemonNameColumn" minWidth="0.0" prefWidth="0.0" text="Pokemon Card" />
+                      <TableColumn fx:id="PokemonNameColumn" minWidth="0.0" prefWidth="0.0" text="Name" />
+                        <TableColumn prefWidth="75.0" text="Set" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

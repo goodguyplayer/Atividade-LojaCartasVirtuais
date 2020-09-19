@@ -14,6 +14,8 @@ public class Controller {
     private TableView<PokemonCard> PokemonTable;
     @FXML
     private TableColumn<PokemonCard, String> PokemonNameColumn;
+    @FXML
+    private TableColumn<PokemonCard, String> PokemonSetColumn;
 
     @FXML
     private Label PokemonNameLabel;
