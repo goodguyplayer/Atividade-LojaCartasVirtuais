@@ -11,6 +11,8 @@ import sample.dao.PokemonCardDAO;
 import sample.model.PokemonCard;
 import sample.parsers.PokemonCardRarityParser;
 
+import static sample.enums.PokemonCardRarity.COMMON;
+
 public class Controller {
 
     @FXML
@@ -105,5 +107,39 @@ public class Controller {
 
         // Add observable list data to the table
         PokemonTable.setItems(central.getCardData());
+    }
+
+    @FXML
+    private void handleNewPerson() {
+        PokemonCard tempCard = new PokemonCard("","","",COMMON,"","");
+        boolean okClicked = central.showCardEditDialog(tempCard);
+        if (okClicked) {
+            central.getCardData().add(tempCard);
+        }
+    }
+
+    /**
+     * Called when the user clicks the edit button. Opens a dialog to edit
+     * details for the selected person.
+     */
+    @FXML
+    private void handleEditPerson() {
+        PokemonCard selectedCard = PokemonTable.getSelectionModel().getSelectedItem();
+        if (selectedCard != null) {
+            boolean okClicked = central.showCardEditDialog(selectedCard);
+            if (okClicked) {
+                showPokemonDetails(selectedCard);
+            }
+
+        } else {
+            // Nothing selected.
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.initOwner(central.getPrimaryStage());
+            alert.setTitle("No Selection");
+            alert.setHeaderText("No Person Selected");
+            alert.setContentText("Please select a person in the table.");
+
+            alert.showAndWait();
+        }
     }
 }
