@@ -22,8 +22,14 @@ import static sample.enums.PokemonCardRarity.COMMON;
  */
 
 /*
-Made with the help of Murilo and https://code.makery.ch/library/javafx-tutorial/part3/
-Took too long to make it work.
+Made with the help of Murilo the links he sent.
+https://www.tutorialspoint.com/javafx/index.htm
+https://code.makery.ch/pt/library/javafx-tutorial/part1/
+http://tutorials.jenkov.com/javafx/index.html
+https://openjfx.io/openjfx-docs/
+http://zetcode.com/gui/javafx/
+https://www.baeldung.com/javafx
+Took too long to make javaFX work.
  */
 public class Controller {
 
