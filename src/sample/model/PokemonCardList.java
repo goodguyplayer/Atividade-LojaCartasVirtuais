@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <h1>Class PokemonCardList</h1>
  * Class made to act as a list for PokemonCard
  *
  * @author Nathan Brito da Silva - 17.00531-0

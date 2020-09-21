@@ -5,10 +5,9 @@ import org.json.JSONObject;
 import sample.model.PokemonCardList;
 
 /**
- * <h1>Class PokemonCardListParser</h1>
- * A class to parse the PokemonCardParser, when used with json
+ * A class to parse the PokemonCardParser, when used with json.
  *
- * @deprecated It was used only to assist in filling the database. May be removed or kept if future versions include API calls
+ * It was used only to assist in filling the database. May be removed or kept if future versions include API calls
  * @author Nathan Brito da Silva - 17.00531-0
  * @version 1.0
  * @since 2020-09-07
@@ -30,7 +29,7 @@ public class PokemonCardListParser {
 
     /**
      * Takes a json array and convert it into a pokemoncardlist
-     * @param json
+     * @param json Takes a JSONArray to convert into cardList
      * @return PokemonCardList
      */
     public static PokemonCardList fromJson(JSONArray json){

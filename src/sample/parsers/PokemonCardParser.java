@@ -3,10 +3,8 @@ import org.json.JSONObject;
 import sample.model.PokemonCard;
 
 /**
- * <h1>Class PokemonCardParser</h1>
  * A class to parse individuals pokemoncards to json
  *
- * @deprecated It was used only to assist in filling the database. May be removed or kept if future versions include API calls
  * @author Nathan Brito da Silva - 17.00531-0
  * @version 1.0
  * @since 2020-09-07

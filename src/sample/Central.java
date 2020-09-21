@@ -27,7 +27,7 @@ public class Central extends Application {
 
     /**
      * Main method for execution
-     * @param args
+     * @param args args
      */
     public void runMe(String[] args){
         launch(args);
@@ -36,7 +36,7 @@ public class Central extends Application {
 
     /**
      * Returns the PrimaryStage
-     * @return
+     * @return returns the primaryStage
      */
     public Stage getPrimaryStage() {
         return primaryStage;
@@ -44,8 +44,8 @@ public class Central extends Application {
 
     /**
      * Used to set the pokemonOverview.fxml and edit.fxml
-     * @param primaryStage
-     * @throws Exception
+     * @param primaryStage The stage
+     * @throws Exception throws Exception
      */
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -71,8 +71,8 @@ public class Central extends Application {
 
     /**
      * Used to display the edit dialog segment
-     * @param card
-     * @return
+     * @param card Takes a PokemonCard.
+     * @return Returns whether the ok button was clicked or not
      */
     public boolean showCardEditDialog(PokemonCard card) {
         try {
@@ -106,7 +106,7 @@ public class Central extends Application {
 
     /**
      * gets all cards from the database to insert in the fxml
-     * @return
+     * @return returns the pokemonCard, an ObservableList
      */
     public ObservableList<PokemonCard> getCardData() {
         PokemonCardDAO cardDAO = new PokemonCardDAO();

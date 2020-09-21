@@ -120,7 +120,7 @@ public class Controller {
 
     /**
      * sets central method
-     * @param central
+     * @param central takes the class Central as a param
      */
     public void setCentral(Central central) {
         this.central = central;
@@ -138,7 +138,7 @@ public class Controller {
         boolean okClicked = central.showCardEditDialog(tempCard);
         if (okClicked) {
             cardDAO.create(tempCard);
-            central.getCardData().add(tempCard);
+            central.getCardData();
         }
     }
 

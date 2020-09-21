@@ -38,7 +38,7 @@ public class EditController {
 
     /**
      * Sets the dialog stage
-     * @param dialogStage
+     * @param dialogStage Takes the Stage as a param
      */
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
@@ -46,7 +46,7 @@ public class EditController {
 
     /**
      * Sets the card
-     * @param card
+     * @param card Takes a pokemonCard as param
      */
     public void setCard(PokemonCard card) {
         this.card = card;
@@ -61,7 +61,7 @@ public class EditController {
 
     /**
      * Checks whether the button "ok" is clicked
-     * @return
+     * @return Returns whether okClicked is true or false
      */
     public boolean isOkClicked() {
         return okClicked;
@@ -96,7 +96,7 @@ public class EditController {
 
     /**
      * Checks to see if input is valid. Else throw a message saying that there's an error
-     * @return
+     * @return returns a boolean value
      */
     private boolean isInputValid() {
         String errorMessage = "";

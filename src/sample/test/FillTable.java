@@ -10,8 +10,7 @@ import sample.parsers.PokemonCardRarityParser;
 import java.io.*;
 
 /**
- * <h1>Class FillTable</h1>
- * <h3>Made for test</h3>
+ * -Made for test-.
  * Originally made to test the PokemonCardDAO and to fill the SQL database with some json files.
  * May be kept in the final product, but it is not required.
  *

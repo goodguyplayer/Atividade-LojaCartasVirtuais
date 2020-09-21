@@ -9,8 +9,7 @@ import sample.parsers.PokemonCardRarityParser;
 import java.util.List;
 
 /**
- * <h1> Class ReadTableData</h1>
- * <h3>Made for test</h3>
+ * -Made for test-.
  * Originally made to test the PokemonCardDAO's data gathering and possibly optimize PokemonCardDAO
  *
  * @author Nathan Brito da Silva - 17.00531-0

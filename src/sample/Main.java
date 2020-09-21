@@ -1,7 +1,6 @@
 package sample;
 
 /**
- * <h1>Main</h1>
  * Used to run Central.
  *
  * @author Nathan Brito da Silva - 17.00531-0

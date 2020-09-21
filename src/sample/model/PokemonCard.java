@@ -3,7 +3,6 @@ package sample.model;
 import sample.enums.PokemonCardRarity;
 
 /**
- * <h1>Class PokemonCard</h1>
  * Class made to contain data of a pokemonCard.
  *
  * @author Nathan Brito da Silva - 17.00531-0
@@ -62,7 +61,7 @@ public class PokemonCard {
 
     /**
      * Sets an id. String
-     * @param id
+     * @param id Sets the param id as the new id
      */
     public void setId(String id) {
         this.id = id;
@@ -78,7 +77,7 @@ public class PokemonCard {
 
     /**
      * Sets a name. String
-     * @param name
+     * @param name Sets the param name as the new name
      */
     public void setName(String name) {
         this.name = name;
@@ -110,7 +109,7 @@ public class PokemonCard {
 
     /**
      * Set a series for the card.
-     * @param series String
+     * @param series Sets the param series as the new series
      */
     public void setSeries(String series) {
         this.series = series;
@@ -126,7 +125,7 @@ public class PokemonCard {
 
     /**
      * Set a different set for the card.
-     * @param set String
+     * @param set Sets the param set as the new set
      */
     public void setSet(String set) {
         this.set = set;

@@ -9,10 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <h1>Class PokemonCardDAO</h1>
  * DAO for PokemonCard. Contains a variety of methods made to make usage easier
  * <p>
  * <br>
+ *
+ * @author Nathan Brito da Silva - 17.00531-0
+ * @version 1.3
+ * @since 2020-09-07
+ */
+
+/*
  *     Version 1.1
  *     - Modified methods get() and getAll(). Removed the list var and added the PokemonCardList.
  *
@@ -21,10 +27,6 @@ import java.util.List;
  *
  *     Version 1.3
  *     - Fixed update method -- Was missing last preparedStatement.setString(7, pokemonCard.getId());
- *
- * @author Nathan Brito da Silva - 17.00531-0
- * @version 1.3
- * @since 2020-09-07
  */
 public class PokemonCardDAO implements DAO<PokemonCard>, DAOFields {
     private Connection connection;

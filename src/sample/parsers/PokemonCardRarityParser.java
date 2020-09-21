@@ -3,7 +3,6 @@ package sample.parsers;
 import sample.enums.PokemonCardRarity;
 
 /**
- * <h1>Class PokemonCardRarityParser</h1>
  * Parses a string and returns the correct enum type.
  * @author Nathan Brito da Silva - 17.00531-0
  * @version 1.0
